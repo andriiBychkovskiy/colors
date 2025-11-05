@@ -28,8 +28,9 @@ import Modal from "../components/Modal";
 import ConfirmationModal from "../components/ConfirmationModal";
 import RoundButton from "../UI/ RoundButton";
 import image from "../assets/150243768_fd25a659-fc17-402c-a5b4-1e5b8d8ad553.jpg";
+import { API_BASE_URL } from "../config/api";
 
-const API_URL = "http://localhost:3000";
+const API_URL = API_BASE_URL;
 
 // Cursor size options
 const CURSOR_SIZES = [
