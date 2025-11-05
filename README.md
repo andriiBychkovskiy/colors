@@ -2,6 +2,8 @@
 
 A beautiful, full-stack interactive digital coloring book application designed specifically for children. Built with React, TypeScript, Node.js, and MongoDB, featuring a colorful, kid-friendly interface with real-time coloring capabilities and comprehensive user management.
 
+**🌐 Live Demo:** [https://kidscolors.onrender.com](https://kidscolors.onrender.com)
+
 ![React](https://img.shields.io/badge/React-19+-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue.svg)
 ![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)
@@ -514,27 +516,58 @@ This transfers data from `react/db.json` to MongoDB collections.
 
 ## 🚀 Deployment
 
+### Render Deployment (Recommended)
+
+**Build Command:**
+```bash
+npm install --legacy-peer-deps && cd react && npm install --legacy-peer-deps --include=dev && npm run build && cd ..
+```
+
+**Start Command:**
+```bash
+node backend/server.js
+```
+
+**Environment Variables:**
+```env
+NODE_ENV=production
+PORT=10000
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/kidscolors?retryWrites=true&w=majority
+```
+
+**Important Notes:**
+- ✅ Use `--include=dev` flag to install vite and other devDependencies needed for build
+- ✅ Whitelist `0.0.0.0/0` in MongoDB Atlas Network Access
+- ✅ Ensure your MongoDB connection string is URL-encoded (special characters in password)
+- ✅ The build command must `cd react` before running build, then `cd ..` back to root
+- ✅ Start command runs from root directory: `node backend/server.js`
+- ✅ Update `react/src/config/api.ts` with your Render URL: `https://your-app.onrender.com`
+- ✅ After updating API URL, rebuild and redeploy for changes to take effect
+
 ### Production Build
 
 ```bash
-# Build frontend
+# Build frontend locally
 cd react
-npm run build:full
+npm install
+npm run build
 
 # This creates:
 # - react/dist/ (static files)
-# - Optimized backend bundle
+# - Optimized for production
 ```
 
 ### Deployment Platforms
 
 **Recommended Platforms:**
 
-1. **Render** (Easiest full-stack deployment)
+1. **Render** ⭐ (Easiest full-stack deployment)
 
    - Connect GitHub repository
    - Auto-deploy on push
-   - Built-in MongoDB add-on available
+   - Use commands above for Build and Start
+   - Built-in environment variable management
+   - Free tier available with MongoDB Atlas
 
 2. **Railway** (Great for databases)
 
@@ -554,18 +587,20 @@ npm run build:full
 
 ### Environment Variables for Production
 
+**Render Environment Variables:**
 ```env
-# Frontend (.env)
-VITE_API_URL=https://your-backend-domain.com
-VITE_FIREBASE_API_KEY=your_production_firebase_key
-VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=your_project_id
-
-# Backend (.env)
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/kids_colors
-PORT=3000
 NODE_ENV=production
+PORT=10000
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/kidscolors?retryWrites=true&w=majority
 ```
+
+**MongoDB Atlas Setup:**
+1. Create a MongoDB Atlas cluster (free tier available)
+2. Go to **Database Access** → Create database user
+3. Go to **Network Access** → Add IP: `0.0.0.0/0` (allows access from anywhere)
+4. Get connection string from **Connect** → **Drivers**
+5. Replace `<password>` with your actual password (URL-encode special characters!)
+6. Add to Render environment variables
 
 ### Security Checklist
 
