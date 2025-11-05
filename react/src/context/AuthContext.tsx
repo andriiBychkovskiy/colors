@@ -13,8 +13,9 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import axios from "axios";
+import { API_ENDPOINTS } from "../config/api";
 
-const API_URL = "http://localhost:3000/users";
+const API_URL = API_ENDPOINTS.USERS;
 
 interface User {
   id: string;
