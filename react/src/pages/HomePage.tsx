@@ -17,8 +17,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { Palette, Brush, Save, Star } from "@mui/icons-material";
+import { API_BASE_URL } from "../config/api";
 
-const API_URL = "http://localhost:3000";
+const API_URL = API_BASE_URL;
 
 // Animated gradient background
 const gradientAnimation = keyframes`
