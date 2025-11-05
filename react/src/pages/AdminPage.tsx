@@ -12,8 +12,9 @@ import { Delete } from "@mui/icons-material";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { PhotoshopPicker } from "react-color";
+import { API_BASE_URL } from "../config/api";
 
-const API_URL = "http://localhost:3000";
+const API_URL = API_BASE_URL;
 
 interface SVGImage {
   id: string;
